@@ -400,13 +400,82 @@
     }
     @media (max-width:768px) {
       .nav-links { display:none; }
+      .nav-wa { display:none; }
       .services-grid, .elec-grid { grid-template-columns:1fr; }
       .carousel-grid { grid-template-columns:1fr; }
       .form-row { grid-template-columns:1fr; }
-      .hero-stats { flex-wrap:wrap; gap:2rem; }
+      .hero-stats { flex-wrap:wrap; gap:1.5rem; justify-content:center; }
       .footer-grid { grid-template-columns:1fr; }
       .topbar-info .topbar-item:nth-child(n+3) { display:none; }
+      /* Sections padding */
+      #servicios,#diferenciador,#electricidad,#productos,#sucursales,#contacto,#exitos { padding:3.5rem 0; }
+      #timeline { padding:2.5rem 0 2rem; }
+      /* Container */
+      .container { padding:0 1.1rem; }
+      #navbar .inner { padding:0 1.1rem; }
+      /* Hero */
+      .hero-content { padding:0 1.1rem 3.5rem; }
+      .hero-ctas { flex-direction:column; align-items:stretch; gap:.75rem; width:100%; max-width:320px; }
+      .btn-cta-main, .btn-explore-hl { justify-content:center; width:100%; }
+      .hero-stats { margin-top:2.5rem; padding-top:1.5rem; }
+      .hero-stat-num { font-size:1.6rem; }
+      /* Product cards */
+      .product-card-img { height:160px; }
+      /* Diff section */
+      .diff-img.full-view img { max-height:320px; }
+      /* Identity */
+      .identity-row { grid-template-columns:1fr; }
+      /* Branches map */
+      .branch-map { height:180px; }
+      /* Footer */
+      .footer-grid { gap:1.5rem; }
+      /* Topbar — show only phone */
+      .topbar-info { gap:.75rem; font-size:.68rem; }
     }
+
+    /* ══ HAMBURGER BUTTON ══ */
+    .nav-hamburger {
+      display:none; flex-direction:column; justify-content:center; gap:5px;
+      cursor:pointer; background:none; border:none; padding:.5rem; z-index:2;
+    }
+    .nav-hamburger span { display:block; width:22px; height:2px; background:#fff; border-radius:2px; transition:transform .3s,opacity .3s; }
+    .nav-hamburger.open span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+    .nav-hamburger.open span:nth-child(2) { opacity:0; transform:translateX(-6px); }
+    .nav-hamburger.open span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
+    @media(max-width:768px) { .nav-hamburger { display:flex; } }
+
+    /* ══ MOBILE MENU ══ */
+    .mobile-menu {
+      position:fixed; inset:0; z-index:300;
+      background:var(--darker);
+      transform:translateX(100%);
+      transition:transform .38s cubic-bezier(.4,0,.2,1);
+      display:flex; flex-direction:column; overflow-y:auto;
+      padding-top:calc(var(--topbar-h) + var(--nav-h));
+    }
+    .mobile-menu.open { transform:translateX(0); }
+    .mobile-menu-body {
+      display:flex; flex-direction:column;
+      padding:2rem 1.5rem 3rem; flex:1;
+    }
+    .mobile-menu-nav { display:flex; flex-direction:column; gap:.25rem; margin-bottom:2.5rem; }
+    .mobile-menu-nav a {
+      font-size:1.25rem; font-weight:700; color:rgba(255,255,255,.75);
+      padding:1rem 0; border-bottom:1px solid rgba(255,255,255,.07);
+      transition:color .2s, padding-left .2s;
+      display:flex; align-items:center; gap:.6rem;
+    }
+    .mobile-menu-nav a:hover, .mobile-menu-nav a:active { color:var(--red); padding-left:.5rem; }
+    .mobile-menu-nav a::before { content:''; display:block; width:3px; height:1.1em; background:var(--red); border-radius:2px; opacity:0; transition:opacity .2s; flex-shrink:0; }
+    .mobile-menu-nav a:hover::before { opacity:1; }
+    .mobile-menu-wa {
+      display:flex; align-items:center; justify-content:center; gap:.55rem;
+      background:#25D366; color:#fff; border-radius:6px;
+      padding:1rem 1.5rem; font-size:1rem; font-weight:700;
+      transition:background .2s;
+    }
+    .mobile-menu-wa:hover { background:#1ebe5d; }
+    .mobile-menu-divider { font-size:.62rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.25); margin-bottom:1rem; }
 
     /* ══ IDENTITY ROW ══ */
     .identity-row { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; margin-top:3rem; padding-top:2.5rem; border-top:1px solid var(--gray-mid); }
@@ -623,8 +692,31 @@
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075a8.1 8.1 0 01-2.39-1.475c-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.3 12.3 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2.013 22l4.978-1.306A9.953 9.953 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
       WhatsApp
     </a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- ══ MOBILE MENU ══ -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-body">
+    <div class="mobile-menu-divider">Navegación</div>
+    <nav class="mobile-menu-nav">
+      <a href="#hero" id="mmHome">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#diferenciador">¿Por qué ENERCOMM?</a>
+      <a href="#productos">Productos</a>
+      <a href="#sucursales">Sucursales</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="mobile-menu-divider">Contáctanos</div>
+    <a href="https://wa.me/526121240887?text=Hola%2C%20quiero%20cotizar%20materiales%20el%C3%A9ctricos." class="mobile-menu-wa" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075a8.1 8.1 0 01-2.39-1.475c-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.3 12.3 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2.013 22l4.978-1.306A9.953 9.953 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+      Cotiza por WhatsApp
+    </a>
+  </div>
+</div>
 
 <div class="nav-spacer"></div>
 
@@ -1555,6 +1647,35 @@
         smoothScrollTo(target.getBoundingClientRect().top + window.scrollY - offset, 1200);
       }
     });
+  });
+
+  // ── MOBILE MENU ──
+  const hamburger = document.getElementById('navHamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  function openMenu() {
+    mobileMenu.classList.add('open');
+    hamburger.classList.add('open');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeMenu();
   });
 
 </script>

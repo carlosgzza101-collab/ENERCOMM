@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Enercomm — Distribución especializada de materiales eléctricos y de telecomunicaciones en Baja California Sur. Conductores, transformadores, tableros, energía solar y más. La Paz y San José del Cabo.">
+  <meta name="description" content="ENERCOMM — Distribución especializada de materiales eléctricos y de telecomunicaciones en Baja California Sur. Conductores, transformadores, tableros, energía solar y más. La Paz y San José del Cabo.">
   <meta name="keywords" content="materiales eléctricos, conductores eléctricos, tableros eléctricos, transformadores, energía solar, cables, La Paz BCS, San José del Cabo, Enercomm">
-  <title>Enercomm — Materiales Eléctricos y Telecomunicaciones | La Paz & San José del Cabo, BCS</title>
+  <title>ENERCOMM — Materiales Eléctricos y Telecomunicaciones | La Paz & San José del Cabo, BCS</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +26,7 @@
       --dark: #2a2a2a; --darker: #1a1a1a;
       --gray-bg: #f5f5f5; --gray-mid: #e0e0e0;
       --white: #fff;
-      --topbar-h: 48px; --nav-h: 64px;
+      --topbar-h: 72px; --nav-h: 64px;
     }
 
     /* ── SCROLL ANIMATIONS ── */
@@ -155,7 +155,13 @@
       line-height:1.08; color:#fff; letter-spacing:-.025em; margin-bottom:1.25rem;
     }
     .hero-title span { color:var(--red); }
-    .hero-enercomm { font-size:clamp(2.6rem,7.5vw,5.5rem); font-weight:900; color:#fff; letter-spacing:-.04em; line-height:1; margin-bottom:.7rem; text-shadow:0 2px 30px rgba(0,0,0,.45); }
+    .hero-enercomm { display:none; }
+    /* Hero reorder: title first, badge second — applies desktop + mobile */
+    .hero-title { order:1; text-transform:uppercase; letter-spacing:-.03em; }
+    .hero-badge { order:2; margin-top:.4rem; }
+    .hero-sub   { order:3; }
+    .hero-ctas  { order:4; }
+    .hero-stats { order:5; }
     .hero-sub { font-size:1.1rem; color:rgba(255,255,255,.72); line-height:1.75; max-width:52ch; margin-bottom:2.5rem; }
     .hero-ctas { display:flex; gap:.875rem; flex-wrap:wrap; justify-content:center; }
     .hero-stats {
@@ -685,6 +691,12 @@
       }
     }
 
+    /* Desktop: big hero title to fill space left by removed ENERCOMM */
+    @media(min-width:769px) {
+      .hero-title { font-size:clamp(3.2rem,9vw,6.5rem); line-height:1.05; margin-bottom:1.25rem; }
+      .hero-sub { font-size:1.15rem; margin-bottom:2.75rem; }
+    }
+
     /* ══ ANIMATED PRIMARY CTA BUTTON ══ */
     .btn-cta-main {
       display:inline-flex; align-items:center; gap:.55rem;
@@ -784,24 +796,46 @@
     <a href="#hero" class="topbar-logo">
       <img src="Nuevo enercomm/Logo blanco.png" alt="Enercomm" style="height:36px;width:auto;" />
     </a>
-    <div class="topbar-info">
-      <div class="topbar-item">
-        <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-        <a href="tel:+526121240887"><strong>612 124 0887</strong></a>
-      </div>
-      <div class="topbar-item">
-        <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        <span><strong>La Paz</strong> &amp; <strong>San José del Cabo</strong></span>
-      </div>
-      <div class="topbar-item">
-        <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        <span>Lun–Vie <strong>8am–6:30pm</strong> &nbsp;|&nbsp; Sáb <strong>9am–2pm</strong></span>
-      </div>
-      <div class="topbar-item">
-        <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        <a href="mailto:contacto@enercomm.com">contacto@enercomm.com</a>
-      </div>
+    <div class="topbar-info" style="flex-direction:column;gap:.28rem;align-items:flex-start;">
+  <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+    <div class="topbar-item" style="gap:.35rem;">
+      <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      <strong style="font-size:.74rem;letter-spacing:.04em;color:#fff;">La Paz</strong>
     </div>
+    <span style="color:rgba(255,255,255,.18);font-size:.8rem;line-height:1;">|</span>
+    <div class="topbar-item">
+      <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+      <a href="tel:+526121240888"><strong>612 124 0888</strong></a>
+    </div>
+    <div class="topbar-item">
+      <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <span>Lun–Vie <strong>8am–6:30pm</strong> &nbsp;|&nbsp; Sáb <strong>9am–2pm</strong></span>
+    </div>
+    <div class="topbar-item">
+      <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      <a href="mailto:ventaslpz@enercomm.mx">ventaslpz@enercomm.mx</a>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.06);padding-top:.28rem;">
+    <div class="topbar-item" style="gap:.35rem;">
+      <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      <strong style="font-size:.74rem;letter-spacing:.04em;color:#fff;">San José del Cabo</strong>
+    </div>
+    <span style="color:rgba(255,255,255,.18);font-size:.8rem;line-height:1;">|</span>
+    <div class="topbar-item">
+      <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+      <a href="tel:+526241237070"><strong>624 123 7070</strong></a>
+    </div>
+    <div class="topbar-item">
+      <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <span>Lun–Vie <strong>8am–6pm</strong> &nbsp;|&nbsp; Sáb <strong>9am–2pm</strong></span>
+    </div>
+    <div class="topbar-item">
+      <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      <a href="mailto:ventassjc@enercomm.mx">ventassjc@enercomm.mx</a>
+    </div>
+  </div>
+</div>
   </div>
 </div>
 
@@ -813,8 +847,8 @@
     </a>
     <div class="nav-links">
       <a href="#hero" class="active" data-i18n="nav_home">Inicio</a>
-      <a href="#servicios" data-i18n="nav_services">Servicios</a>
       <a href="#diferenciador">¿Por qué ENERCOMM?</a>
+      <a href="#servicios" data-i18n="nav_services">Soluciones</a>
       <a href="#productos" class="nav-hl" data-i18n="nav_products">Productos</a>
       <a href="#sucursales" data-i18n="nav_branches">Sucursales</a>
       <a href="#contacto" data-i18n="nav_contact">Contacto</a>
@@ -843,8 +877,8 @@
   <div class="mobile-menu-body">
     <nav class="mobile-menu-nav">
       <a href="#hero">Inicio</a>
-      <a href="#servicios">Servicios</a>
       <a href="#diferenciador">¿Por qué ENERCOMM?</a>
+      <a href="#servicios">Soluciones</a>
       <a href="#productos">Productos</a>
       <a href="#sucursales">Sucursales</a>
       <a href="#contacto">Contacto</a>
@@ -877,7 +911,7 @@
       Conectando <span>proyectos.</span>
     </h1>
     <p class="hero-sub">
-      Material eléctrico y comunicaciones.
+      Suministro de material eléctrico, canalización y de media tensión.
     </p>
     <div class="hero-ctas">
       <a href="https://wa.me/526121240887?text=Hola%2C%20quiero%20cotizar%20materiales%20el%C3%A9ctricos." class="btn-cta-main" target="_blank" rel="noopener">
@@ -920,120 +954,81 @@
   <div class="marquee-wrap">
     <!-- Track duplicated for seamless loop -->
     <div class="marquee-track" aria-hidden="true">
-      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/BITICINO.png" alt="bticino" onerror="this.outerHTML='<span class=\'bl-text\'>bticino</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/indianawire.com" alt="Indiana Wire &amp; Cable" onerror="this.outerHTML='<span class=\'bl-text\'>Indiana W&amp;C</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/leviton.com" alt="Leviton" onerror="this.outerHTML='<span class=\'bl-text\'>LEVITON</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/iusa.com.mx" alt="IUSA" onerror="this.outerHTML='<span class=\'bl-text\'>IUSA</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/VAIKON.png" alt="Viakon" onerror="this.outerHTML='<span class=\'bl-text\'>VIAKON</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/argos.com.mx" alt="Argos" onerror="this.outerHTML='<span class=\'bl-text\'>ARGOS</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/PROLEC.webp" alt="Prolec GE" onerror="this.outerHTML='<span class=\'bl-text\'>PROLEC GE</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/futuraindustrial.com.mx" alt="Futura" onerror="this.outerHTML='<span class=\'bl-text\'>FUTURA</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Condumex.webp" alt="Condumex" onerror="this.outerHTML='<span class=\'bl-text\'>CONDUMEX</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/burndy.com" alt="Burndy" onerror="this.outerHTML='<span class=\'bl-text\'>BURNDY</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/truper.com" alt="Truper" onerror="this.outerHTML='<span class=\'bl-text\'>TRUPER</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/lenoxtools.com" alt="Lenox" onerror="this.outerHTML='<span class=\'bl-text\'>LENOX</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/prysmiangroup.com" alt="Prysmian Group" onerror="this.outerHTML='<span class=\'bl-text\'>Prysmian</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/se.com" alt="Square D" onerror="this.outerHTML='<span class=\'bl-text\'>SQUARE D</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/kobrex.com" alt="Kobrex" onerror="this.outerHTML='<span class=\'bl-text\'>KOBREX</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/sigtronic.com.mx" alt="Sigtronic" onerror="this.outerHTML='<span class=\'bl-text\'>Sigtronic</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/anclo.com.mx" alt="Anclo" onerror="this.outerHTML='<span class=\'bl-text\'>ANCLO</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/weg.net" alt="WEG" onerror="this.outerHTML='<span class=\'bl-text\'>WEG</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/hubbell.com" alt="Hubbell" onerror="this.outerHTML='<span class=\'bl-text\'>HUBBELL</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><span class="bl-text">EVANS</span></div><div class="brand-sep"></div>
-      <div class="brand-item"><span class="bl-text">TOTAL GROUND</span></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/ABB.png" alt="ABB" onerror="this.outerHTML='<span class=\'bl-text\'>ABB</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/chint.com" alt="Chint" onerror="this.outerHTML='<span class=\'bl-text\'>CHINT</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/cooperindustries.com" alt="Cooper" onerror="this.outerHTML='<span class=\'bl-text\'>COOPER</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><span class="bl-text">I.G.</span></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Legrand.png" alt="Legrand" onerror="this.outerHTML='<span class=\'bl-text\'>legrand</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><span class="bl-text">fortoplas</span></div><div class="brand-sep"></div>
-      <div class="brand-item"><span class="bl-text">JUPITER</span></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/findernet.com" alt="finder" onerror="this.outerHTML='<span class=\'bl-text\'>finder</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/tecnolite.com.mx" alt="tecnolite" onerror="this.outerHTML='<span class=\'bl-text\'>tecnolite</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/3m.com" alt="3M" onerror="this.outerHTML='<span class=\'bl-text\'>3M</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/eaton.com" alt="Eaton" onerror="this.outerHTML='<span class=\'bl-text\'>EATON</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/tramontina.com" alt="Tramontina" onerror="this.outerHTML='<span class=\'bl-text\'>TRAMONTINA</span>'"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/BTicino_logo.svg.png" alt="bticino"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/brand_Indiana.png" alt="Indiana Wire &amp; Cable"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Leviton%202C%20Logo.png" alt="Leviton"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Logo_Grupo_IUSA.svg.png" alt="IUSA"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Logo-2022-inovamosconenergia.png" alt="Viakon"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/argos-1.png" alt="Argos"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/8.-ProlecGE-1.webp" alt="Prolec GE"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Group-1756.png" alt="Futura"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Condumex_logo.svg.png" alt="Condumex"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/burndy-logo-2gV2KxJrX.png" alt="Burndy"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/truper.png" alt="Truper"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/lenox2259.logowik.com.webp" alt="Lenox"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/irwin-tools-logo-color_500px.png" alt="Irwin Tools"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/square-d-by-schneider-electric-vector-logo.png" alt="Square D"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Logo%20Kobrex.png" alt="Kobrex"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/sigtronic-logo-vertical.svg" alt="Sigtronic"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/anclo-500332.png" alt="Anclo"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/WEG_Equipamentos_Elétricos.svg.png" alt="WEG"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/hubbell_1.webp" alt="Hubbell"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/EVANS_contorno_blanco.png" alt="Evans" style="filter:invert(1) grayscale(0)!important;opacity:1!important;"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/total-ground-sistemas-tierra-fisica-pararrayos-supresores-logo.png" alt="Total Ground"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/ABB_logo.svg.png" alt="ABB"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/chint-logo.webp" alt="Chint"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/cooper-logo-png-transparent.png" alt="Cooper"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/ig.png" alt="I.G."></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Logo-28da2351-0c20-44a8-b9d1-79a8d64a33f0.webp" alt="Legrand"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/logo-fortoplas2-01-1024x312.png" alt="Fortoplas"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/jupiter.png" alt="Jupiter"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/jinko-solar-logo.svg" alt="Jinko Solar"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/irwin-tools-logo-color_500px.png" alt="Irwin Tools"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/finder-logo.png" alt="finder"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/TecnoLite.png.webp" alt="Tecno Lite"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/3M_wordmark.svg.png" alt="3M"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Eaton_Corporation_logo.svg.png" alt="Eaton"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Tramontina-Logo.svg.png" alt="Tramontina"></div>
       <!-- Duplicate for seamless loop -->
       <div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/BITICINO.png" alt="bticino" onerror="this.outerHTML='<span class=\'bl-text\'>bticino</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/indianawire.com" alt="Indiana Wire &amp; Cable" onerror="this.outerHTML='<span class=\'bl-text\'>Indiana W&amp;C</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/leviton.com" alt="Leviton" onerror="this.outerHTML='<span class=\'bl-text\'>LEVITON</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/iusa.com.mx" alt="IUSA" onerror="this.outerHTML='<span class=\'bl-text\'>IUSA</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/VAIKON.png" alt="Viakon" onerror="this.outerHTML='<span class=\'bl-text\'>VIAKON</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/argos.com.mx" alt="Argos" onerror="this.outerHTML='<span class=\'bl-text\'>ARGOS</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/PROLEC.webp" alt="Prolec GE" onerror="this.outerHTML='<span class=\'bl-text\'>PROLEC GE</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/futuraindustrial.com.mx" alt="Futura" onerror="this.outerHTML='<span class=\'bl-text\'>FUTURA</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Condumex.webp" alt="Condumex" onerror="this.outerHTML='<span class=\'bl-text\'>CONDUMEX</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/burndy.com" alt="Burndy" onerror="this.outerHTML='<span class=\'bl-text\'>BURNDY</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/truper.com" alt="Truper" onerror="this.outerHTML='<span class=\'bl-text\'>TRUPER</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/lenoxtools.com" alt="Lenox" onerror="this.outerHTML='<span class=\'bl-text\'>LENOX</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/prysmiangroup.com" alt="Prysmian Group" onerror="this.outerHTML='<span class=\'bl-text\'>Prysmian</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/se.com" alt="Square D" onerror="this.outerHTML='<span class=\'bl-text\'>SQUARE D</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/kobrex.com" alt="Kobrex" onerror="this.outerHTML='<span class=\'bl-text\'>KOBREX</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/sigtronic.com.mx" alt="Sigtronic" onerror="this.outerHTML='<span class=\'bl-text\'>Sigtronic</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/anclo.com.mx" alt="Anclo" onerror="this.outerHTML='<span class=\'bl-text\'>ANCLO</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/weg.net" alt="WEG" onerror="this.outerHTML='<span class=\'bl-text\'>WEG</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/hubbell.com" alt="Hubbell" onerror="this.outerHTML='<span class=\'bl-text\'>HUBBELL</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><span class="bl-text">EVANS</span></div><div class="brand-sep"></div>
-      <div class="brand-item"><span class="bl-text">TOTAL GROUND</span></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/ABB.png" alt="ABB" onerror="this.outerHTML='<span class=\'bl-text\'>ABB</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/chint.com" alt="Chint" onerror="this.outerHTML='<span class=\'bl-text\'>CHINT</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/cooperindustries.com" alt="Cooper" onerror="this.outerHTML='<span class=\'bl-text\'>COOPER</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><span class="bl-text">I.G.</span></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Legrand.png" alt="Legrand" onerror="this.outerHTML='<span class=\'bl-text\'>legrand</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><span class="bl-text">fortoplas</span></div><div class="brand-sep"></div>
-      <div class="brand-item"><span class="bl-text">JUPITER</span></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/findernet.com" alt="finder" onerror="this.outerHTML='<span class=\'bl-text\'>finder</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/tecnolite.com.mx" alt="tecnolite" onerror="this.outerHTML='<span class=\'bl-text\'>tecnolite</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/3m.com" alt="3M" onerror="this.outerHTML='<span class=\'bl-text\'>3M</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/eaton.com" alt="Eaton" onerror="this.outerHTML='<span class=\'bl-text\'>EATON</span>'"></div><div class="brand-sep"></div>
-      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/tramontina.com" alt="Tramontina" onerror="this.outerHTML='<span class=\'bl-text\'>TRAMONTINA</span>'"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/BTicino_logo.svg.png" alt="bticino"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/brand_Indiana.png" alt="Indiana Wire &amp; Cable"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Leviton%202C%20Logo.png" alt="Leviton"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Logo_Grupo_IUSA.svg.png" alt="IUSA"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Logo-2022-inovamosconenergia.png" alt="Viakon"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/argos-1.png" alt="Argos"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/8.-ProlecGE-1.webp" alt="Prolec GE"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Group-1756.png" alt="Futura"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Condumex_logo.svg.png" alt="Condumex"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/burndy-logo-2gV2KxJrX.png" alt="Burndy"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/truper.png" alt="Truper"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/lenox2259.logowik.com.webp" alt="Lenox"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/irwin-tools-logo-color_500px.png" alt="Irwin Tools"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/square-d-by-schneider-electric-vector-logo.png" alt="Square D"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Logo%20Kobrex.png" alt="Kobrex"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/sigtronic-logo-vertical.svg" alt="Sigtronic"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/anclo-500332.png" alt="Anclo"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/WEG_Equipamentos_Elétricos.svg.png" alt="WEG"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/hubbell_1.webp" alt="Hubbell"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/EVANS_contorno_blanco.png" alt="Evans" style="filter:invert(1) grayscale(0)!important;opacity:1!important;"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/total-ground-sistemas-tierra-fisica-pararrayos-supresores-logo.png" alt="Total Ground"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/ABB_logo.svg.png" alt="ABB"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/chint-logo.webp" alt="Chint"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/cooper-logo-png-transparent.png" alt="Cooper"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/ig.png" alt="I.G."></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Logo-28da2351-0c20-44a8-b9d1-79a8d64a33f0.webp" alt="Legrand"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/logo-fortoplas2-01-1024x312.png" alt="Fortoplas"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/jupiter.png" alt="Jupiter"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/jinko-solar-logo.svg" alt="Jinko Solar"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/irwin-tools-logo-color_500px.png" alt="Irwin Tools"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/finder-logo.png" alt="finder"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/TecnoLite.png.webp" alt="Tecno Lite"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/3M_wordmark.svg.png" alt="3M"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Eaton_Corporation_logo.svg.png" alt="Eaton"></div><div class="brand-sep"></div>
+      <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Tramontina-Logo.svg.png" alt="Tramontina"></div>
     </div>
   </div>
 </div>
-
-<!-- ══ SERVICIOS ══ -->
-<section id="servicios">
-  <div class="container">
-    <div class="reveal">
-      <span class="section-tag" data-i18n="srv_tag">Áreas de aplicación</span>
-      <p class="section-title" data-i18n="srv_title">Soluciones para cada sector y escala de proyecto</p>
-      <p class="section-sub" data-i18n="srv_sub">Desde instalaciones residenciales hasta infraestructura eléctrica de alta tensión para desarrollos industriales y comerciales.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <h3>Sector Residencial</h3>
-        <p>Centros de carga, conductores certificados, interruptores, iluminación LED y soluciones residenciales inteligentes para obra nueva o remodelación.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
-        <h3>Suministro para Proyectos</h3>
-        <p>Abastecimiento técnico para obras de ingeniería, desarrollos inmobiliarios y proyectos de infraestructura. Cotización por volumen, tiempos de entrega definidos y respaldo documental.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
-        <h3>Sector Comercial e Industrial</h3>
-        <p>Materiales de alta especificación para tableros de control, transformadores de distribución y redes de telecomunicaciones en edificios corporativos y plantas industriales.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
-        <h3>Mantenimiento de Sistemas</h3>
-        <p>Inventario completo para mantenimiento preventivo y correctivo de instalaciones eléctricas: tableros, generadores, paneles fotovoltaicos y sistemas de seguridad.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg></div>
-        <h3>Instalación de Nuevas Redes</h3>
-        <p>Materiales certificados conforme a normas NOM y CFE para proyectos de instalación eléctrica desde cero: canalización, cableado de media tensión y sistemas pararrayos.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
-        <h3>Energía Solar Fotovoltaica</h3>
-        <p>Paneles, inversores, controladores de carga, baterías y sistemas de montaje para instalaciones fotovoltaicas residenciales, comerciales e industriales.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ══ DIFERENCIADOR ══ -->
 <section id="diferenciador">
@@ -1042,22 +1037,22 @@
       <div class="reveal-left">
         <div class="diff-img full-view">
           <div class="diff-blur-bg" style="background-image:url('Mejoras CV/Por que enercomm.jpeg')"></div>
-          <img src="Mejoras CV/Por que enercomm.jpeg" alt="Equipo Enercomm — Sucursal Matríz La Paz">
+          <img src="Mejoras CV/Por que enercomm.jpeg" alt="Equipo ENERCOMM — Sucursal Matríz La Paz">
           <div class="diff-img-badge">Sucursal Matríz La Paz</div>
         </div>
       </div>
       <div class="reveal-right">
-        <span class="section-tag">¿Por qué Enercomm?</span>
+        <span class="section-tag">¿Por qué ENERCOMM?</span>
         <p class="section-title">Conocimiento técnico al servicio del proyecto</p>
-        <p class="section-sub">La diferencia no está únicamente en el inventario — está en el respaldo técnico. Nuestro equipo asesora a ingenieros, contratistas y técnicos en la selección precisa de materiales según la aplicación, normativa vigente y condiciones de operación.</p>
+        <p class="section-sub">Nuestra diferencia no está solo en lo que vendemos, sino en cómo acompañamos a nuestros clientes. Desde <strong style="color:var(--red)">2006</strong>, brindamos asesoría técnica especializada que garantiza soluciones adecuadas a cada aplicación, cumpliendo normativa y condiciones reales de operación.</p>
         <div class="diff-features">
           <div class="diff-feat featured">
             <div class="diff-feat-icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
-            <div><h4>Atención integral y personalizada</h4><p>Entendemos cada proyecto para ofrecer alternativas viables en producto, precio y tiempos — facilitando la toma de decisiones en cada compra.</p></div>
+            <div><h4>Asesoría integral y personalizada</h4><p>Ofrecemos alternativas viables en producto, costo y tiempos de entrega para cada proyecto. Facilitamos decisiones con información clara, opciones confiables y acompañamiento constante.</p></div>
           </div>
           <div class="diff-feat">
             <div class="diff-feat-icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div>
-            <div><h4>Amplio inventario con más de 4,000 productos</h4><p>Catálogo técnico diversificado en dos puntos de distribución. Cotizaciones por volumen con tiempos de respuesta definidos.</p></div>
+            <div><h4>Amplio inventario con más de 4,000 productos</h4><p>Contamos con más de 4,000 productos en stock para atención inmediata. Nuestra operación asegura disponibilidad y respuesta ágil en cada requerimiento.</p></div>
           </div>
         </div>
       </div>
@@ -1066,106 +1061,28 @@
       <div class="diff-features reveal-left" style="align-self:start; padding-top:2.5rem; border-top:1px solid var(--gray-mid); gap:1.1rem;">
         <div class="diff-feat">
           <div class="diff-feat-icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
-          <div><h4>Equipo con formación técnica</h4><p>Personal capacitado para atender a ingenieros civiles, eléctricos, arquitectos y técnicos con precisión en la especificación de materiales.</p></div>
+          <div><h4>Equipo con formación técnica</h4><p>Personal capacitado para brindar asesoría precisa en la especificación de materiales. Aseguramos soluciones que cumplen con los requerimientos desde la planeación del proyecto.</p></div>
         </div>
         <div class="diff-feat">
           <div class="diff-feat-icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg></div>
-          <div><h4>Logística con valor agregado</h4><p>Flota propia con grúa para entregas técnicas en sitio. Logística eficiente para cumplir en tiempo y forma, con servicio en constante mejora.</p></div>
+          <div><h4>Logística con valor agregado</h4><p>Flota propia con grúa para entregas técnicas directamente en obra. Cumplimos en tiempo y forma, incluso en condiciones operativas exigentes.</p></div>
         </div>
         <div class="diff-feat">
           <div class="diff-feat-icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg></div>
-          <div><h4>Capacidad de inventario y bodega propia</h4><p>Más de 1,000 m² en BCS garantizan disponibilidad para proyectos de cualquier escala, con respuesta oportuna sin depender de importación.</p></div>
+          <div><h4>Capacidad de inventario y bodega propia</h4><p>Más de 1,000 m² de almacenamiento que garantizan disponibilidad constante. Capacidad para atender proyectos de cualquier escala con respuesta oportuna.</p></div>
         </div>
       </div>
 
       <!-- Row 2 right: balancing image -->
       <div class="reveal-right" style="align-self:start; padding-top:2.5rem; border-top:1px solid var(--gray-mid);">
         <div class="diff-img">
-          <img src="Mejoras CV/Imagen HERO.png" alt="Instalaciones Enercomm — San José del Cabo, BCS" style="height:360px;object-fit:cover;width:100%;">
+          <img src="Mejoras CV/Imagen HERO.png" alt="Instalaciones ENERCOMM — San José del Cabo, BCS" style="height:360px;object-fit:cover;width:100%;">
           <div class="diff-img-badge">Sucursal San José del Cabo</div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ══ TIMELINE ══ -->
-<section id="timeline">
-  <div class="container" style="position:relative;z-index:1;">
-    <div class="reveal" style="text-align:center;">
-      <span class="section-tag">Nuestra trayectoria</span>
-      <p class="section-title light">20 años de crecimiento sostenido</p>
-      <p class="section-sub light" style="margin:0 auto 2rem;">Desde nuestra fundación en 2006, Enercomm ha crecido de forma constante para convertirse en referente de distribución eléctrica en Baja California Sur.</p>
-    </div>
-    <div class="tl-v-wrap">
-      <div class="tl-v-spine"></div>
-
-      <div class="tl-v-item">
-        <div class="tl-v-card tl-v-card-l">
-          <div class="tl-v-year">2006</div>
-          <div class="tl-v-title">Fundación de Enercomm</div>
-          <div class="tl-v-desc">Inicio de operaciones en La Paz, BCS como distribuidor especializado de materiales eléctricos para proyectos industriales, comerciales y residenciales.</div>
-        </div>
-        <div class="tl-v-dot-col"><div class="tl-v-dot"></div></div>
-        <div class="tl-v-spacer"></div>
-      </div>
-
-      <div class="tl-v-item">
-        <div class="tl-v-spacer"></div>
-        <div class="tl-v-dot-col"><div class="tl-v-dot"></div></div>
-        <div class="tl-v-card tl-v-card-r">
-          <div class="tl-v-year">2007</div>
-          <div class="tl-v-title">Primeros proyectos de gran escala</div>
-          <div class="tl-v-desc">Suministro para la apertura de las primeras 100 sucursales Bancoppel y el proyecto minero Rofomex en Sonora, consolidando la capacidad logística y técnica.</div>
-        </div>
-      </div>
-
-      <div class="tl-v-item">
-        <div class="tl-v-card tl-v-card-l">
-          <div class="tl-v-year">2015</div>
-          <div class="tl-v-title">Nueva bodega en La Paz</div>
-          <div class="tl-v-desc">Ampliación de instalaciones con más de 1,000 m² de bodega propia en BCS para soportar el crecimiento del inventario y la demanda de proyectos regionales.</div>
-        </div>
-        <div class="tl-v-dot-col"><div class="tl-v-dot"></div></div>
-        <div class="tl-v-spacer"></div>
-      </div>
-
-      <div class="tl-v-item">
-        <div class="tl-v-spacer"></div>
-        <div class="tl-v-dot-col"><div class="tl-v-dot"></div></div>
-        <div class="tl-v-card tl-v-card-r">
-          <div class="tl-v-year">2023</div>
-          <div class="tl-v-title">Consolidación en BCS</div>
-          <div class="tl-v-desc">Enercomm se consolida como referente de distribución eléctrica en Baja California Sur, con suministros para proyectos hoteleros, industriales e infraestructura pública de gran escala.</div>
-        </div>
-      </div>
-
-      <div class="tl-v-item">
-        <div class="tl-v-card tl-v-card-l">
-          <div class="tl-v-year">2024</div>
-          <div class="tl-v-title">Apertura de San José del Cabo</div>
-          <div class="tl-v-desc">Expansión estratégica con la apertura de sucursal en San José del Cabo, ampliando la cobertura para atender el corredor turístico-industrial de Los Cabos.</div>
-        </div>
-        <div class="tl-v-dot-col"><div class="tl-v-dot"></div></div>
-        <div class="tl-v-spacer"></div>
-      </div>
-
-      <div class="tl-v-item">
-        <div class="tl-v-spacer"></div>
-        <div class="tl-v-dot-col"><div class="tl-v-dot"></div></div>
-        <div class="tl-v-card tl-v-card-r">
-          <div class="tl-v-year">2026</div>
-          <div class="tl-v-title">20 años de servicio técnico</div>
-          <div class="tl-v-desc">Dos décadas distribuyendo materiales eléctricos y de comunicaciones con vocación técnica, bodega propia, flota de entrega y logística especializada en el noroeste de México.</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ══ SEPARATOR ══ -->
-<div class="tl-exitos-sep"><div class="tl-exitos-sep-line"></div></div>
 
 <!-- ══ CASOS DE ÉXITO ══ -->
 <section id="exitos">
@@ -1185,62 +1102,133 @@
     <div class="reveal" style="text-align:center;">
       <span class="section-tag">Casos de éxito</span>
       <p class="section-title light">Proyectos que respaldan nuestra trayectoria</p>
-      <p class="section-sub light" style="margin:0 auto 3rem;">Más de 20 años suministrando materiales críticos a obras de infraestructura, hotelería, minería, industria y servicios públicos en el noroeste de México.</p>
+      <p class="section-sub light" style="margin:0 auto 3rem;">Más de 20 años participando en proyectos estratégicos en el noroeste de México, suministrando materiales eléctricos críticos y brindando asesoría técnica especializada para sectores como infraestructura, energía, hotelería, minería e industria.</p>
     </div>
     <div class="exitos-grid">
       <div class="exito-item reveal">
         <span class="exito-year-bg">2007</span>
         <div class="exito-label">Minería · Sonora</div>
         <div class="exito-title">Reapertura de mina Rofomex</div>
-        <div class="exito-meta">Suministro de cable de control especializado</div>
+        <div class="exito-meta">Suministro de cable de control especializado para operación industrial.</div>
       </div>
       <div class="exito-item reveal">
         <span class="exito-year-bg">2007</span>
         <div class="exito-label">Retail · Nacional</div>
         <div class="exito-title">Primeras 100 sucursales Bancoppel</div>
-        <div class="exito-meta">Cables UTP, alarma y herramientas</div>
+        <div class="exito-meta">Suministro de cableado UTP, sistemas de alarma y herramientas.</div>
       </div>
       <div class="exito-item reveal">
         <span class="exito-year-bg">2012</span>
-        <div class="exito-label">Desarrollo · Cabo San Lucas</div>
-        <div class="exito-title">Desarrollo "Diamante"</div>
-        <div class="exito-meta">Transformadores, cables y accesorios de alta tensión</div>
+        <div class="exito-label">Desarrollo · Cabo San Lucas, BCS</div>
+        <div class="exito-title">Desarrollo Diamante</div>
+        <div class="exito-meta">Suministro de transformadores, cableado y accesorios de alta tensión.</div>
       </div>
       <div class="exito-item reveal">
         <span class="exito-year-bg">2016</span>
         <div class="exito-label">Obra pública · La Paz, BCS</div>
-        <div class="exito-title">Remodelación Centro Histórico La Paz</div>
-        <div class="exito-meta">Transformadores, cables y material eléctrico</div>
+        <div class="exito-title">Remodelación Centro Histórico</div>
+        <div class="exito-meta">Suministro de material eléctrico y transformadores para infraestructura urbana.</div>
       </div>
       <div class="exito-item reveal">
         <span class="exito-year-bg">2018</span>
-        <div class="exito-label">Hotelería · Los Cabos</div>
+        <div class="exito-label">Hotelería · Cabo San Lucas, BCS</div>
         <div class="exito-title">Hotel Hard Rock Los Cabos</div>
-        <div class="exito-meta">Red de media tensión — cables y registros</div>
+        <div class="exito-meta">Suministro de cableado y componentes para red de media tensión.</div>
       </div>
       <div class="exito-item reveal">
         <span class="exito-year-bg">2022</span>
-        <div class="exito-label">Infraestructura marina · La Paz</div>
+        <div class="exito-label">Infraestructura marina · La Paz, BCS</div>
         <div class="exito-title">Muelle Marina Cortez</div>
-        <div class="exito-meta">Cable submarino de suministro</div>
+        <div class="exito-meta">Suministro de cable submarino para infraestructura eléctrica.</div>
       </div>
       <div class="exito-item reveal">
         <span class="exito-year-bg">2023</span>
         <div class="exito-label">Energía · La Paz, BCS</div>
-        <div class="exito-title">Planta de gas New Fortress Energy</div>
-        <div class="exito-meta">Cableado de fuerza y control · Puerto Pichilingüe</div>
+        <div class="exito-title">Planta de gas New Fortress Energy (Pichilingüe)</div>
+        <div class="exito-meta">Suministro de cableado de fuerza y control para operación energética.</div>
       </div>
       <div class="exito-item reveal">
         <span class="exito-year-bg">2024</span>
-        <div class="exito-label">Distribución eléctrica · BCS</div>
+        <div class="exito-label">Distribución eléctrica · La Paz, BCS</div>
         <div class="exito-title">Electrificación Todos Santos</div>
-        <div class="exito-meta">Transformador 5,000 KVA 33 kV–13.2 kV trifásico</div>
+        <div class="exito-meta">Suministro de transformador trifásico de 5,000 kVA (33 kV – 13.2 kV).</div>
       </div>
       <div class="exito-item reveal">
         <span class="exito-year-bg">2025</span>
-        <div class="exito-label">Industrial · BCS</div>
+        <div class="exito-label">Industrial · La Paz, BCS</div>
         <div class="exito-title">Naves Industriales NOVOTEC</div>
-        <div class="exito-meta">Suministro integral de material eléctrico</div>
+        <div class="exito-meta">Suministro integral de materiales eléctricos para operación industrial.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ELECTRICIDAD ══ -->
+<section id="electricidad">
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-tag" style="color:var(--red);">La electricidad que mueve BCS</span>
+      <p class="section-title light">Distribución técnica con cobertura regional</p>
+      <p class="section-sub light" style="margin:0 auto 2rem;">Dos puntos de distribución estratégicos para atender proyectos en todo Baja California Sur con inventario disponible y asesoría especializada.</p>
+    </div>
+    <div class="elec-grid">
+      <div class="elec-item reveal">
+        <div class="elec-num">+4,000</div>
+        <h3>Productos en inventario</h3>
+        <p>Amplio catálogo con disponibilidad inmediata en nuestras dos sucursales para proyectos de cualquier escala.</p>
+      </div>
+      <div class="elec-item reveal">
+        <div class="elec-num">20+</div>
+        <h3>Años de experiencia</h3>
+        <p>Desde 2006 respaldando proyectos eléctricos en el noroeste de México con conocimiento técnico y logística especializada.</p>
+      </div>
+      <div class="elec-item reveal">
+        <div class="elec-num">30+</div>
+        <h3>Marcas representadas</h3>
+        <p>Las marcas líderes del sector eléctrico disponibles en un solo punto de distribución con asesoría técnica de calidad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICIOS ══ -->
+<section id="servicios">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag" data-i18n="srv_tag">Áreas de aplicación</span>
+      <p class="section-title" data-i18n="srv_title">Soluciones integrales para cada sector y escala de proyecto</p>
+      <p class="section-sub" data-i18n="srv_sub">En ENERCOMM ofrecemos soluciones eléctricas adaptadas a cada necesidad, desde proyectos residenciales hasta infraestructura de alta demanda para sectores comerciales e industriales. Nuestro enfoque combina calidad, disponibilidad y asesoría técnica para asegurar resultados confiables.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h3>Sector Residencial</h3>
+        <p>Equipamos hogares con soluciones seguras, eficientes y modernas. Contamos con centros de carga, conductores certificados, interruptores, iluminación LED y sistemas inteligentes ideales tanto para obra nueva como para remodelaciones.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
+        <h3>Suministro para Proyectos</h3>
+        <p>Somos aliados estratégicos en el desarrollo de proyectos de ingeniería e infraestructura. Ofrecemos abastecimiento técnico especializado, cotización por volumen, tiempos de entrega confiables y respaldo documental para garantizar el cumplimiento de cada obra.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+        <h3>Sector Comercial e Industrial</h3>
+        <p>Atendemos proyectos de alta exigencia con materiales de especificación técnica superior. Suministramos soluciones para tableros de control, transformadores de distribución y redes de telecomunicaciones en edificios corporativos, comercios y plantas industriales.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3>Mantenimiento de Sistemas</h3>
+        <p>Facilitamos la continuidad operativa de las instalaciones eléctricas. Disponemos de un inventario completo para mantenimiento preventivo y correctivo, incluyendo tableros, generadores, sistemas fotovoltaicos y equipos de seguridad.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg></div>
+        <h3>Instalación de Nuevas Redes</h3>
+        <p>Proveemos todo lo necesario para proyectos eléctricos desde cero. Nuestros materiales cumplen con normativas NOM y CFE, abarcando canalización, cableado de media tensión y sistemas de protección como pararrayos.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+        <h3>Energía Solar Fotovoltaica</h3>
+        <p>Impulsamos soluciones sustentables y eficientes. Ofrecemos paneles solares, inversores, controladores, baterías y sistemas de montaje para instalaciones residenciales, comerciales e industriales.</p>
       </div>
     </div>
   </div>
@@ -1266,6 +1254,53 @@
       </button>
     </div>
 
+    <!-- ══ BRAND MARQUEE en Catálogo ══ -->
+    <div style="margin:1.75rem -2rem 0;overflow:hidden;border-top:1px solid var(--gray-mid);border-bottom:1px solid var(--gray-mid);padding:.85rem 0;background:#fff;">
+      <div class="marquee-wrap">
+        <div class="marquee-track" aria-hidden="true">
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Condumex_logo.svg.png" alt="Condumex"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Logo-2022-inovamosconenergia.png" alt="Viakon"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/ABB_logo.svg.png" alt="ABB"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/BTicino_logo.svg.png" alt="bticino"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/8.-ProlecGE-1.webp" alt="Prolec GE"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Logo-28da2351-0c20-44a8-b9d1-79a8d64a33f0.webp" alt="Legrand"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/jinko-solar-logo.svg" alt="Jinko Solar"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Leviton%202C%20Logo.png" alt="Leviton"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/3M_wordmark.svg.png" alt="3M"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Eaton_Corporation_logo.svg.png" alt="Eaton"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/WEG_Equipamentos_Elétricos.svg.png" alt="WEG"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/square-d-by-schneider-electric-vector-logo.png" alt="Square D"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/hubbell_1.webp" alt="Hubbell"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Logo_Grupo_IUSA.svg.png" alt="IUSA"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Logo%20Kobrex.png" alt="Kobrex"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/truper.png" alt="Truper"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Tramontina-Logo.svg.png" alt="Tramontina"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/chint-logo.webp" alt="Chint"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/burndy-logo-2gV2KxJrX.png" alt="Burndy"></div><div class="brand-sep"></div>
+          <!-- duplicate for seamless loop -->
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Condumex_logo.svg.png" alt="Condumex"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Logo-2022-inovamosconenergia.png" alt="Viakon"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/ABB_logo.svg.png" alt="ABB"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/BTicino_logo.svg.png" alt="bticino"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/8.-ProlecGE-1.webp" alt="Prolec GE"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Logo-28da2351-0c20-44a8-b9d1-79a8d64a33f0.webp" alt="Legrand"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/jinko-solar-logo.svg" alt="Jinko Solar"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Leviton%202C%20Logo.png" alt="Leviton"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/3M_wordmark.svg.png" alt="3M"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Eaton_Corporation_logo.svg.png" alt="Eaton"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/WEG_Equipamentos_Elétricos.svg.png" alt="WEG"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/square-d-by-schneider-electric-vector-logo.png" alt="Square D"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/hubbell_1.webp" alt="Hubbell"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Logo_Grupo_IUSA.svg.png" alt="IUSA"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Logo%20Kobrex.png" alt="Kobrex"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/truper.png" alt="Truper"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/Tramontina-Logo.svg.png" alt="Tramontina"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/chint-logo.webp" alt="Chint"></div><div class="brand-sep"></div>
+          <div class="brand-item"><img class="brand-logo" src="Nuevo enercomm/Marcas distribuidas/burndy-logo-2gV2KxJrX.png" alt="Burndy"></div>
+        </div>
+      </div>
+    </div>
+
     <div class="carousel-wrap reveal">
       <!-- Side arrows -->
       <button class="carousel-side-arrow csa-left" id="prevBtnSide" aria-label="Página anterior">
@@ -1285,14 +1320,15 @@
               <div class="product-card-body">
                 <div class="product-card-title">Conductores Eléctricos</div>
                 <div class="product-card-items">
-                  <span class="product-card-item">Cables para redes media tensión aéreo y subterráneo</span>
-                  <span class="product-card-item">Cables para bombas sumergibles</span>
-                  <span class="product-card-item">Cables THHWLS 600v</span>
-                  <span class="product-card-item">Cables THHWN 600v protección aceites y gasolina</span>
-                  <span class="product-card-item">Cables de aluminio DRS 600v</span>
-                  <span class="product-card-item">Cordones uso rudo · Cordones SPT</span>
+                  <span class="product-card-item">Cable 100% de cobre para redes de media tensión aéreo y subterráneo</span>
+                  <span class="product-card-item">Cable de uso rudo</span>
+                  <span class="product-card-item">Cable XLP de aluminio subterráneo</span>
+                  <span class="product-card-item">Cable de potencia 15 KV</span>
+                  <span class="product-card-item">Cable de cobre desnudo</span>
+                  <span class="product-card-item">Alambre de cobre y de aluminio</span>
+                  <span class="product-card-item">Cable fotovoltaico</span>
                 </div>
-                <div class="product-card-brands">condumex · viakon · kobrex · argos · iusa</div>
+                <div class="product-card-brands">Condumex · Viakon · Kobrex · Indiana · Argos · IUSA</div>
               </div>
             </div>
             <div class="product-card">
@@ -1319,7 +1355,7 @@
                   <span class="product-card-item">Tableros de alumbrado de 12 a 42 espacios interior y exterior</span>
                   <span class="product-card-item">Tableros de control y CCM's a la medida del proyecto</span>
                 </div>
-                <div class="product-card-brands">bticino · legrand</div>
+                <div class="product-card-brands">Square D · BTICINO · FELEC · RILEZ · GENERAL ELECTRIC</div>
               </div>
             </div>
             <div class="product-card">
@@ -1327,12 +1363,13 @@
               <div class="product-card-body">
                 <div class="product-card-title">Interruptores</div>
                 <div class="product-card-items">
-                  <span class="product-card-item">Interruptores de caja moldeada y accesorios</span>
-                  <span class="product-card-item">Tipo QO · Tipo QP y Murray</span>
+                  <span class="product-card-item">Tipo QO</span>
+                  <span class="product-card-item">Tipo QP y Murray</span>
                   <span class="product-card-item">Para montaje en riel DIN</span>
+                  <span class="product-card-item">Interruptores de caja moldeada y accesorios</span>
                   <span class="product-card-item">Desconectadores de cuchilla y rotativo</span>
                 </div>
-                <div class="product-card-brands">bticino · legrand · weg · abb</div>
+                <div class="product-card-brands">bticino · Square D · CHINT · STECK · SIEMENS · GENERAL ELECTRIC</div>
               </div>
             </div>
             <div class="product-card">
@@ -1395,13 +1432,13 @@
               <div class="product-card-body">
                 <div class="product-card-title">Energía Solar</div>
                 <div class="product-card-items">
-                  <span class="product-card-item">Paneles · Controladores de carga</span>
+                  <span class="product-card-item">Paneles solares</span>
+                  <span class="product-card-item">Controladores de carga</span>
                   <span class="product-card-item">Inversores en línea y aislados</span>
-                  <span class="product-card-item">Cargadores de baterías · Baterías</span>
-                  <span class="product-card-item">Paquetes completos · Sistemas de montajes</span>
+                  <span class="product-card-item">Baterías</span>
                   <span class="product-card-item">Conectores y accesorios</span>
                 </div>
-                <div class="product-card-brands">solarworld · jinko solar · samlex · tracer · lth</div>
+                <div class="product-card-brands">jinko solar · epever · victron energy</div>
               </div>
             </div>
           </div>
@@ -1429,14 +1466,14 @@
               <div class="product-card-body">
                 <div class="product-card-title">Canalización y Soporte</div>
                 <div class="product-card-items">
-                  <span class="product-card-item">Charola de malla electro-soldada</span>
-                  <span class="product-card-item">Charola tipo escalera de aluminio</span>
-                  <span class="product-card-item">Soportes tipo unicanal</span>
                   <span class="product-card-item">Tubería conduit de PVC Cédula 30 y 40</span>
                   <span class="product-card-item">Tubería conduit galvanizada pared gruesa y delgada</span>
                   <span class="product-card-item">Condulets y cajas registro</span>
+                  <span class="product-card-item">Charola de malla electro-soldada</span>
+                  <span class="product-card-item">Charola tipo escalera de aluminio</span>
+                  <span class="product-card-item">Soportes tipo unicanal</span>
                 </div>
-                <div class="product-card-brands">cablofill · macse · futura industrial · emmsa · rymco</div>
+                <div class="product-card-brands">futura industrial · emmsa · rymco</div>
               </div>
             </div>
             <div class="product-card">
@@ -1458,14 +1495,14 @@
               <div class="product-card-body">
                 <div class="product-card-title">Herramientas</div>
                 <div class="product-card-items">
-                  <span class="product-card-item">En general (pinzas, desarmadores, crimpeadoras hasta calibre 750)</span>
+                  <span class="product-card-item">Pinzas, desarmadores, crimpeadoras hasta calibre 750</span>
                   <span class="product-card-item">Cortadoras de cable</span>
                   <span class="product-card-item">Pertigas desconectadoras</span>
                   <span class="product-card-item">Guantes de trabajo y aislantes hasta 35kv</span>
                   <span class="product-card-item">Equipo de seguridad</span>
                   <span class="product-card-item">Equipo de medición (voltímetros, analizadores, etc.)</span>
                 </div>
-                <div class="product-card-brands">ideal-industries · hetsa · klein · argos · irwin · lenox</div>
+                <div class="product-card-brands">argos · trupper · klein tools · stanley · irwin · tramontina · milwaukee</div>
               </div>
             </div>
             <div class="product-card">
@@ -1522,29 +1559,29 @@
           <span class="branch-badge">Sucursal matriz</span>
           <div class="branch-name">La Paz, B.C.S.</div>
           <div class="branch-info">
-            <div class="branch-row"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span>Blvd. Pino Payán S/N, Entre Prolongación J. Mijáres y Propiedad Privada, Villas del Encanto, Palacio del Sol, 23085 La Paz, B.C.S.</span></div>
-            <div class="branch-row"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg><a href="tel:+526121240887">01 612 124 0887</a></div>
-            <div class="branch-row"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><a href="mailto:contacto@enercomm.com">contacto@enercomm.com</a></div>
+            <div class="branch-row"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span>Blvd. Pino Payas S/N Entre Prolongación J. Mujica y Propiedad Privada, Villas del Encanto, Paseos del Sol, 23085 La Paz, B.C.S.</span></div>
+            <div class="branch-row"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg><a href="tel:+526121240888">612 124 0888</a></div>
+            <div class="branch-row"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><a href="mailto:ventaslpz@enercomm.mx">ventaslpz@enercomm.mx</a></div>
           </div>
           <div class="branch-hours"><h4>Horario de atención</h4><p>Lunes – Viernes: 8:00 am – 6:30 pm<br>Sábado: 9:00 am – 2:00 pm</p></div>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=24.1032257,-110.3362655" target="_blank" rel="noopener" class="btn btn-outline-dark" style="margin-top:1.25rem;width:100%;justify-content:center;">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Blvd.+Pino+Payas+S/N,+Villas+del+Encanto,+Paseos+del+Sol,+23085+La+Paz,+BCS" target="_blank" rel="noopener" class="btn btn-outline-dark" style="margin-top:1.25rem;width:100%;justify-content:center;">
             <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             Cómo llegar
           </a>
         </div>
       </div>
       <div class="branch-card reveal">
-        <iframe class="branch-map" src="https://maps.google.com/maps?q=23.0558924,-109.7135517&z=16&output=embed" allowfullscreen="" loading="lazy"></iframe>
+        <iframe class="branch-map" src="https://maps.google.com/maps?q=23.0631,-109.6891&z=16&output=embed" allowfullscreen="" loading="lazy"></iframe>
         <div class="branch-body">
           <span class="branch-badge">Sucursal</span>
           <div class="branch-name">San José del Cabo, B.C.S.</div>
           <div class="branch-info">
-            <div class="branch-row"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span>Blvd. Finisterra 803, Col. Mauricio Castro, 23445 San José del Cabo, B.C.S.</span></div>
-            <div class="branch-row"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg><span><a href="tel:+526241237070">624 123 7070</a> · WA: <a href="https://wa.me/526241618598" target="_blank">624 161 8598</a></span></div>
-            <div class="branch-row"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><a href="mailto:contacto@enercomm.com">contacto@enercomm.com</a></div>
+            <div class="branch-row"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span>Blvd. Forjadores 820, Col. Mauricio Castro, 23443 San José del Cabo, BCS</span></div>
+            <div class="branch-row"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg><a href="tel:+526241237070">624 123 7070</a></div>
+            <div class="branch-row"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><a href="mailto:ventassjc@enercomm.mx">ventassjc@enercomm.mx</a></div>
           </div>
-          <div class="branch-hours"><h4>Horario de atención</h4><p>Lunes – Viernes: 8:00 am – 6:30 pm<br>Sábado: 9:00 am – 2:00 pm</p></div>
-          <a href="https://www.google.com/maps/dir/25.6933059,-100.3729013/23.0558924,-109.7135517/@24.0007285,-116.0108561,5z" target="_blank" rel="noopener" class="btn btn-outline-dark" style="margin-top:1.25rem;width:100%;justify-content:center;">
+          <div class="branch-hours"><h4>Horario de atención</h4><p>Lunes – Viernes: 8:00 am – 6:00 pm<br>Sábado: 9:00 am – 2:00 pm</p></div>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Blvd.+Forjadores+820,+Col.+Mauricio+Castro,+23443+San+Jose+del+Cabo,+BCS" target="_blank" rel="noopener" class="btn btn-outline-dark" style="margin-top:1.25rem;width:100%;justify-content:center;">
             <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             Cómo llegar
           </a>
@@ -1573,7 +1610,7 @@
           </div>
         </div>
         <div class="contact-links">
-          <div class="contact-link-row"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg><a href="tel:+526121240887">612 124 0887</a> — La Paz</div>
+          <div class="contact-link-row"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg><a href="tel:+526121240888">612 124 0888</a> — La Paz</div>
           <div class="contact-link-row"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg><a href="tel:+526241237070">624 123 7070</a> — San José del Cabo</div>
           <div class="contact-link-row"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><a href="mailto:contacto@enercomm.com">contacto@enercomm.com</a></div>
         </div>
@@ -1633,11 +1670,11 @@
       </div>
       <div class="footer-col">
         <h4>Contacto</h4>
-        <ul><li><a href="tel:+526121240887">La Paz: 612 124 0887</a></li><li><a href="tel:+526241237070">SJC: 624 123 7070</a></li><li><a href="mailto:contacto@enercomm.com">contacto@enercomm.com</a></li><li><a href="https://wa.me/526121240887" target="_blank">WhatsApp</a></li></ul>
+        <ul><li><a href="tel:+526121240888">La Paz: 612 124 0888</a></li><li><a href="tel:+526241237070">SJC: 624 123 7070</a></li><li><a href="mailto:contacto@enercomm.com">contacto@enercomm.com</a></li><li><a href="https://wa.me/526121240888" target="_blank">WhatsApp</a></li></ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Enercomm — Energía y Comunicaciones de México. Todos los derechos reservados.</span>
+      <span>© 2026 ENERCOMM — Energía y Comunicaciones de México. Todos los derechos reservados.</span>
       <span>La Paz &amp; San José del Cabo, B.C.S.</span>
     </div>
   </div>

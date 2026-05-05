@@ -155,7 +155,7 @@
       line-height:1.08; color:#fff; letter-spacing:-.025em; margin-bottom:1.25rem;
     }
     .hero-title span { color:var(--red); }
-    .hero-enercomm { display:none; }
+    .hero-enercomm { font-size:clamp(2.6rem,7.5vw,5.5rem); font-weight:900; color:#fff; letter-spacing:-.04em; line-height:1; margin-bottom:.7rem; text-shadow:0 2px 30px rgba(0,0,0,.45); }
     .hero-sub { font-size:1.1rem; color:rgba(255,255,255,.72); line-height:1.75; max-width:52ch; margin-bottom:2.5rem; }
     .hero-ctas { display:flex; gap:.875rem; flex-wrap:wrap; justify-content:center; }
     .hero-stats {
@@ -666,22 +666,22 @@
       .footer-col a { font-size:.75rem; }
       .section-title { font-size:clamp(.88rem,3.5vw,1.1rem); }
       .section-sub { font-size:.82rem; }
-    }
 
-    /* ══ DESKTOP-ONLY OVERRIDES ══ */
-    @media(min-width:769px) {
-      /* Hero: title first (uppercase), badge second, sub third */
+      /* A — Hero mobile: título primero en mayúsculas, badge segundo */
       .hero-title { order:1; text-transform:uppercase; }
-      .hero-badge { order:2; margin-top:.5rem; }
+      .hero-badge { order:2; margin-top:.35rem; }
       .hero-sub   { order:3; }
       .hero-ctas  { order:4; }
       .hero-stats { order:5; }
-      /* Push content to upper portion — less empty space at top */
       #hero { justify-content:flex-start; }
-      .hero-content { padding:5rem 2rem 6rem; }
-      /* Center lone last card when it's the only one in its row (7-card pages) */
-      .carousel-grid .product-card:last-child:nth-child(3n+1) {
-        grid-column: 2 / 3;
+      .hero-content { padding-top:3rem; }
+
+      /* B — Centrar card solitario al final de grid de 2 cols (móvil) */
+      .carousel-grid .product-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        max-width: calc((100% - .65rem) / 2);
+        margin-left: auto;
+        margin-right: auto;
       }
     }
 
@@ -1376,12 +1376,6 @@
                 <div class="product-card-brands">iemsa · prolec · ig · zetrak</div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <!-- Página 2: cards 8–14 -->
-        <div class="carousel-page">
-          <div class="carousel-grid">
             <div class="product-card">
               <img class="product-card-img" src="Fotos de productos/tierra fisica y sistema pararrayos.jpg" alt="Tierra Física y Pararrayos" loading="lazy">
               <div class="product-card-body">
@@ -1410,6 +1404,12 @@
                 <div class="product-card-brands">solarworld · jinko solar · samlex · tracer · lth</div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Página 2: cards 10–14 -->
+        <div class="carousel-page">
+          <div class="carousel-grid">
             <div class="product-card">
               <img class="product-card-img" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80" alt="Redes de Comunicación" loading="lazy">
               <div class="product-card-body">

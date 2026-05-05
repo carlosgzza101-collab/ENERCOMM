@@ -594,6 +594,80 @@
     @media(max-width:1024px) { .exitos-grid { grid-template-columns:repeat(2,1fr); } .identity-row { grid-template-columns:repeat(2,1fr); } }
     @media(max-width:768px) { .exitos-grid { grid-template-columns:1fr; } .identity-row { grid-template-columns:1fr; } }
 
+    /* ══ MOBILE REFINEMENTS v2 ══ */
+    @media(max-width:768px) {
+      /* 1 — Fix right-side overflow */
+      html { overflow-x:hidden; }
+      #topbar .inner { padding:0 1rem; }
+
+      /* 2 — Catálogo: scroll único, sin paginación */
+      .carousel-page { display:block !important; animation:none !important; }
+      .carousel-nav { display:none !important; }
+      .carousel-side-arrow { display:none !important; }
+      .carousel-page + .carousel-page { margin-top:.65rem; }
+      .carousel-wrap { margin-top:1.25rem; }
+
+      /* 3 — Productos destacado en menú hamburguesa */
+      .mobile-menu-nav a[href="#productos"] {
+        color:#ff9e9e;
+        background:rgba(224,82,82,.1);
+        border-radius:6px;
+        padding:.85rem .75rem;
+        font-weight:800;
+        border-bottom-color:rgba(224,82,82,.18);
+        animation:navHlPulse 2.8s ease-in-out infinite;
+      }
+      .mobile-menu-nav a[href="#productos"]::after {
+        content:'Catálogo';
+        margin-left:auto;
+        background:rgba(224,82,82,.2);
+        color:var(--red);
+        font-size:.58rem;
+        font-weight:700;
+        letter-spacing:.06em;
+        padding:.2rem .5rem;
+        border-radius:20px;
+        flex-shrink:0;
+      }
+
+      /* 4 — Hero: quitar ENERCOMM, layout limpio */
+      .hero-enercomm { display:none; }
+      .hero-content { padding:2.25rem 1.25rem 3.5rem; }
+      .hero-badge { font-size:.6rem; letter-spacing:.1em; margin-bottom:1rem; }
+      .hero-title { font-size:clamp(1.9rem,7.5vw,2.6rem); margin-bottom:.65rem; }
+      .hero-sub { font-size:.9rem; line-height:1.65; margin-bottom:1.75rem; max-width:100%; }
+      .hero-ctas { max-width:100%; gap:.65rem; }
+      .hero-stats { margin-top:1.75rem; padding-top:1.25rem; gap:.85rem 2rem; }
+      .hero-stat-num { font-size:1.3rem; }
+      .hero-stat-label { font-size:.58rem; }
+      .scroll-indicator { display:none; }
+
+      /* 5 — Polish general */
+      .service-card { padding:1.1rem 1rem; }
+      .service-icon { width:36px; height:36px; margin-bottom:.7rem; }
+      .service-card h3 { font-size:.88rem; }
+      .service-card p { font-size:.78rem; }
+      .elec-item { padding:1rem .9rem; }
+      .elec-num { font-size:1.5rem; margin-bottom:.2rem; }
+      .elec-item h3 { font-size:.88rem; }
+      .elec-item p { font-size:.78rem; }
+      .diff-feat { padding:.8rem; gap:.65rem; }
+      .diff-feat-icon { width:30px; height:30px; flex-shrink:0; }
+      .diff-feat h4 { font-size:.82rem; }
+      .diff-feat p { font-size:.75rem; }
+      .contact-wa-box { padding:.85rem 1rem; gap:.7rem; }
+      .wa-icon-circle { width:36px; height:36px; flex-shrink:0; }
+      .contact-form { padding:1.4rem 1rem; }
+      .branch-body { padding:1.1rem 1rem; }
+      .branch-name { font-size:1rem; margin-bottom:.75rem; }
+      footer { padding:2rem 0 1rem; }
+      .footer-brand p { font-size:.75rem; }
+      .footer-col h4 { font-size:.62rem; }
+      .footer-col a { font-size:.75rem; }
+      .section-title { font-size:clamp(.88rem,3.5vw,1.1rem); }
+      .section-sub { font-size:.82rem; }
+    }
+
     /* ══ ANIMATED PRIMARY CTA BUTTON ══ */
     .btn-cta-main {
       display:inline-flex; align-items:center; gap:.55rem;

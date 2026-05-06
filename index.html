@@ -621,12 +621,25 @@
       html { overflow-x:clip; } /* clip: no affecting position:fixed like hidden does */
       #topbar .inner { padding:0 1rem; }
 
-      /* 2 — Catálogo: scroll único, sin paginación */
-      .carousel-page { display:block !important; animation:none !important; }
-      .carousel-nav { display:none !important; }
+      /* 2 — Catálogo: 2 páginas (8+6) con flechas visibles */
+      .carousel-page { display:none; }
+      .carousel-page.active { display:block; animation:carouselFadeIn .45s ease; }
       .carousel-side-arrow { display:none !important; }
-      .carousel-page + .carousel-page { margin-top:.65rem; }
-      .carousel-wrap { margin-top:1.25rem; }
+      /* Ocultar nav superior (hijo directo de .container), dejar solo el inferior */
+      .container > .carousel-nav { display:none; }
+      .carousel-wrap { margin-top:1rem; }
+      /* Botones de nav más grandes para touch */
+      .carousel-btn { width:44px; height:44px; }
+      .carousel-nav { gap:.75rem; margin-top:1.25rem; }
+      /* Grid 2 columnas compacto */
+      .carousel-grid { grid-template-columns:repeat(2,1fr)!important; gap:.6rem; }
+      .product-card-img { height:110px; }
+      .product-card-body { padding:.7rem .8rem .85rem; }
+      .product-card-title { font-size:.78rem; margin-bottom:.35rem; }
+      .product-card-item { font-size:.67rem; }
+      .product-card-brands { display:none; }
+      /* CTA block al final */
+      .productos-cta-block { margin-top:1.75rem; padding-top:1.75rem; }
 
       /* 3 — Productos destacado en menú hamburguesa */
       .mobile-menu-nav a[href="#productos"] {

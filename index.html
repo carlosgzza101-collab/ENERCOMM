@@ -411,12 +411,14 @@
       .form-row { grid-template-columns:1fr; }
       .hero-stats { flex-wrap:wrap; gap:1.5rem; justify-content:center; }
       .footer-grid { grid-template-columns:1fr; }
-      /* Topbar mobile: show only city + phone, hide hours and email */
+      /* Topbar mobile: hide email, show city + phone + hours */
       .topbar-hide-m { display:none!important; }
-      #topbar .inner { padding:0 .75rem; }
-      .topbar-info { font-size:.62rem; gap:.2rem!important; }
-      .topbar-info > div { gap:.5rem!important; flex-wrap:nowrap; }
-      #topbar { height:auto; min-height:var(--topbar-h); padding:.2rem 0; }
+      #topbar { height:auto; padding:.3rem 0; }
+      #topbar .inner { padding:0 .75rem; align-items:flex-start; }
+      .topbar-info { font-size:.6rem; gap:.22rem!important; align-items:flex-start!important; }
+      .topbar-info > div { gap:.55rem!important; flex-wrap:wrap; }
+      .topbar-info .topbar-item { gap:.25rem; }
+      .topbar-info strong { font-size:inherit; }
       /* Sections padding — más compacto */
       #servicios,#diferenciador,#electricidad,#productos,#sucursales,#contacto,#exitos { padding:2.5rem 0; }
       #timeline { padding:2rem 0 1.5rem; }
@@ -812,9 +814,9 @@
       <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
       <a href="tel:+526121240888"><strong>612 124 0888</strong></a>
     </div>
-    <div class="topbar-item topbar-hide-m">
+    <div class="topbar-item">
       <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-      <span>Lun–Vie <strong>8am–6:30pm</strong> &nbsp;|&nbsp; Sáb <strong>9am–2pm</strong></span>
+      <span>Lun–Vie <strong>8–6:30pm</strong> · Sáb <strong>9–2pm</strong></span>
     </div>
     <div class="topbar-item topbar-hide-m">
       <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
@@ -824,16 +826,16 @@
   <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.06);padding-top:.28rem;">
     <div class="topbar-item" style="gap:.35rem;">
       <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-      <strong style="font-size:.74rem;letter-spacing:.04em;color:#fff;">San José del Cabo</strong>
+      <strong style="font-size:.74rem;letter-spacing:.04em;color:#fff;">SJC</strong>
     </div>
     <span style="color:rgba(255,255,255,.18);font-size:.8rem;line-height:1;">|</span>
     <div class="topbar-item">
       <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
       <a href="tel:+526241237070"><strong>624 123 7070</strong></a>
     </div>
-    <div class="topbar-item topbar-hide-m">
+    <div class="topbar-item">
       <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-      <span>Lun–Vie <strong>8am–6pm</strong> &nbsp;|&nbsp; Sáb <strong>9am–2pm</strong></span>
+      <span>Lun–Vie <strong>8–6pm</strong> · Sáb <strong>9–2pm</strong></span>
     </div>
     <div class="topbar-item topbar-hide-m">
       <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>

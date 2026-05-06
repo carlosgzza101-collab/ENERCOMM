@@ -87,6 +87,12 @@
     .logo-img-wrap img { height:30px; width:auto; }
     .topbar-info { display:flex; align-items:center; gap:1.5rem; font-size:.72rem; color:rgba(255,255,255,.65); }
     .topbar-item { display:flex; align-items:center; gap:.3rem; }
+    /* Branch info layout */
+    .tb-branch { display:flex; align-items:center; gap:.45rem; white-space:nowrap; }
+    .tb-city { color:#fff; font-weight:700; font-size:.72rem; letter-spacing:.03em; }
+    .tb-dot { color:rgba(255,255,255,.22); font-size:.65rem; line-height:1; }
+    .tb-hours { color:rgba(255,255,255,.55); font-size:.65rem; }
+    .tb-pipe { color:rgba(255,255,255,.2); font-size:.8rem; line-height:1; }
     .topbar-item svg { color:var(--red); flex-shrink:0; }
     .topbar-item a { color:rgba(255,255,255,.75); transition:color .2s; }
     .topbar-item a:hover { color:var(--red); }
@@ -412,10 +418,15 @@
       .hero-stats { flex-wrap:wrap; gap:1.5rem; justify-content:center; }
       .footer-grid { grid-template-columns:1fr; }
       /* Topbar mobile: hide email, show city + phone + hours */
-      .topbar-hide-m { display:none!important; }
-      #topbar .inner { padding:0 .75rem; justify-content:center; }
-      .topbar-info { font-size:.68rem; }
-      .topbar-info strong { font-size:.68rem; }
+      :root { --topbar-h: 72px; }
+      #topbar { height:auto; min-height:72px; }
+      #topbar .inner { padding:0 .9rem; justify-content:center; }
+      .topbar-info { flex-direction:column!important; gap:.22rem!important; align-items:center!important; }
+      .tb-branch { gap:.3rem; }
+      .tb-city { font-size:.64rem; }
+      .tb-hours { font-size:.58rem; }
+      .tb-pipe { display:none; }
+      .tb-branch-sjc { border-top:1px solid rgba(255,255,255,.07); padding-top:.22rem; }
       /* Sections padding — más compacto */
       #servicios,#diferenciador,#electricidad,#productos,#sucursales,#contacto,#exitos { padding:2.5rem 0; }
       #timeline { padding:2rem 0 1.5rem; }
@@ -801,14 +812,24 @@
       <img src="Nuevo enercomm/Logo blanco.png" alt="Enercomm" style="height:36px;width:auto;" />
     </a>
     <div class="topbar-info" style="flex-direction:row;align-items:center;justify-content:center;gap:2rem;width:100%;">
-      <div class="topbar-item" style="gap:.4rem;min-width:6rem;justify-content:flex-end;">
-        <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        <strong style="letter-spacing:.04em;color:#fff;">La Paz</strong>
+      <!-- La Paz -->
+      <div class="tb-branch">
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color:var(--red);flex-shrink:0;"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <span class="tb-city">La Paz</span>
+        <span class="tb-dot">·</span>
+        <span class="tb-hours">Lun–Vie <strong style="color:rgba(255,255,255,.8);">8–6:30pm</strong></span>
+        <span class="tb-dot">·</span>
+        <span class="tb-hours">Sáb <strong style="color:rgba(255,255,255,.8);">9–2pm</strong></span>
       </div>
-      <span style="color:rgba(255,255,255,.2);font-size:.75rem;">|</span>
-      <div class="topbar-item" style="gap:.4rem;min-width:6rem;justify-content:flex-start;">
-        <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        <strong style="letter-spacing:.04em;color:#fff;">San José del Cabo</strong>
+      <span class="tb-pipe">|</span>
+      <!-- San José del Cabo -->
+      <div class="tb-branch tb-branch-sjc">
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color:var(--red);flex-shrink:0;"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <span class="tb-city">San José del Cabo</span>
+        <span class="tb-dot">·</span>
+        <span class="tb-hours">Lun–Vie <strong style="color:rgba(255,255,255,.8);">8–6pm</strong></span>
+        <span class="tb-dot">·</span>
+        <span class="tb-hours">Sáb <strong style="color:rgba(255,255,255,.8);">9–2pm</strong></span>
       </div>
     </div>
   </div>

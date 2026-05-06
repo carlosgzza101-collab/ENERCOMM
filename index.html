@@ -625,8 +625,8 @@
       .carousel-page { display:none; }
       .carousel-page.active { display:block; animation:carouselFadeIn .45s ease; }
       .carousel-side-arrow { display:none !important; }
-      /* Ocultar nav superior (hijo directo de .container), dejar solo el inferior */
-      .container > .carousel-nav { display:none; }
+      /* Mostrar ambas barras de navegación (arriba y abajo) */
+      .container > .carousel-nav { display:flex; margin-top:1rem; margin-bottom:.5rem; }
       .carousel-wrap { margin-top:1rem; }
       /* Botones de nav más grandes para touch */
       .carousel-btn { width:44px; height:44px; }

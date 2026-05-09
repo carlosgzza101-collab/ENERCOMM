@@ -315,7 +315,8 @@
     .product-card-items { display:flex; flex-direction:column; gap:.3rem; flex:1; }
     .product-card-item { font-size:.75rem; color:#555; display:flex; align-items:baseline; gap:.35rem; line-height:1.45; }
     .product-card-item::before { content:'•'; color:var(--red); font-size:.7rem; flex-shrink:0; }
-    .product-card-brands { margin-top:1rem; padding-top:.8rem; border-top:1px solid var(--gray-mid); font-size:.65rem; color:rgba(0,0,0,.35); font-style:italic; }
+    .product-card-brands { margin-top:1rem; padding-top:.75rem; border-top:1px solid var(--gray-mid); display:flex; flex-wrap:wrap; gap:.25rem .5rem; align-items:center; justify-content:center; min-height:20px; font-size:.65rem; color:rgba(0,0,0,.35); font-style:italic; }
+    .pcb-logo { height:36px; width:auto; max-width:150px; object-fit:contain; filter:grayscale(1) opacity(.65); mix-blend-mode:multiply; flex-shrink:0; }
 
     /* Carousel nav */
     .carousel-nav { display:flex; justify-content:center; align-items:center; gap:1.5rem; margin-top:2.5rem; }
@@ -625,8 +626,8 @@
       .carousel-page { display:none; }
       .carousel-page.active { display:block; animation:carouselFadeIn .45s ease; }
       .carousel-side-arrow { display:none !important; }
-      /* Mostrar ambas barras de navegación (arriba y abajo) */
-      .container > .carousel-nav { display:flex; margin-top:1rem; margin-bottom:.5rem; }
+      /* Ocultar nav superior (hijo directo de .container), dejar solo el inferior */
+      .container > .carousel-nav { display:none; }
       .carousel-wrap { margin-top:1rem; }
       /* Botones de nav más grandes para touch */
       .carousel-btn { width:44px; height:44px; }
@@ -721,8 +722,9 @@
 
     /* Desktop: big hero title to fill space left by removed ENERCOMM */
     @media(min-width:769px) {
-      .hero-title { font-size:clamp(3.2rem,9vw,6.5rem); line-height:1.05; margin-bottom:1.25rem; }
-      .hero-sub { font-size:1.15rem; margin-bottom:2.75rem; }
+      .hero-title { font-size:clamp(2.6rem,7vw,5rem); line-height:1.05; margin-bottom:1.25rem; }
+      .hero-badge { font-size:.62rem; padding:.28rem .75rem; }
+      .hero-sub { font-size:1rem; margin-bottom:2.75rem; }
     }
 
     /* ══ ANIMATED PRIMARY CTA BUTTON ══ */
@@ -914,7 +916,7 @@
       <span data-i18n="hero_badge">Energía y comunicaciones de México — Baja California Sur</span>
     </div>
     <h1 class="hero-title">
-      Conectando <span>proyectos.</span>
+      Conectando<br><span>proyectos.</span>
     </h1>
     <p class="hero-sub">
       Suministro de material eléctrico, canalización y de media tensión.
@@ -1169,34 +1171,6 @@
   </div>
 </section>
 
-<!-- ══ ELECTRICIDAD ══ -->
-<section id="electricidad">
-  <div class="container" style="position:relative;z-index:1;">
-    <div class="reveal" style="text-align:center;">
-      <span class="section-tag" style="color:var(--red);">La electricidad que mueve BCS</span>
-      <p class="section-title light">Distribución técnica con cobertura regional</p>
-      <p class="section-sub light" style="margin:0 auto 2rem;">Dos puntos de distribución estratégicos para atender proyectos en todo Baja California Sur con inventario disponible y asesoría especializada.</p>
-    </div>
-    <div class="elec-grid">
-      <div class="elec-item reveal">
-        <div class="elec-num">+4,000</div>
-        <h3>Productos en inventario</h3>
-        <p>Amplio catálogo con disponibilidad inmediata en nuestras dos sucursales para proyectos de cualquier escala.</p>
-      </div>
-      <div class="elec-item reveal">
-        <div class="elec-num">20+</div>
-        <h3>Años de experiencia</h3>
-        <p>Desde 2006 respaldando proyectos eléctricos en el noroeste de México con conocimiento técnico y logística especializada.</p>
-      </div>
-      <div class="elec-item reveal">
-        <div class="elec-num">30+</div>
-        <h3>Marcas representadas</h3>
-        <p>Las marcas líderes del sector eléctrico disponibles en un solo punto de distribución con asesoría técnica de calidad.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ══ SERVICIOS ══ -->
 <section id="servicios">
   <div class="container">
@@ -1334,7 +1308,14 @@
                   <span class="product-card-item">Alambre de cobre y de aluminio</span>
                   <span class="product-card-item">Cable fotovoltaico</span>
                 </div>
-                <div class="product-card-brands">Condumex · Viakon · Kobrex · Indiana · Argos · IUSA</div>
+                <div class="product-card-brands">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/Condumex_logo.svg.png" alt="Condumex">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/Logo-2022-inovamosconenergia.png" alt="Viakon">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/Logo%20Kobrex.png" alt="Kobrex">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/brand_Indiana.png" alt="Indiana">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/argos-1.png" alt="Argos">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/Logo_Grupo_IUSA.svg.png" alt="IUSA">
+                </div>
               </div>
             </div>
             <div class="product-card">
@@ -1348,7 +1329,10 @@
                   <span class="product-card-item">Cables para sistema de audio</span>
                   <span class="product-card-item">Cables para instrumentación y control</span>
                 </div>
-                <div class="product-card-brands">condumex · viakon · eim</div>
+                <div class="product-card-brands">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/Condumex_logo.svg.png" alt="Condumex">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/Logo-2022-inovamosconenergia.png" alt="Viakon">
+                </div>
               </div>
             </div>
             <div class="product-card">
@@ -1361,7 +1345,10 @@
                   <span class="product-card-item">Tableros de alumbrado de 12 a 42 espacios interior y exterior</span>
                   <span class="product-card-item">Tableros de control y CCM's a la medida del proyecto</span>
                 </div>
-                <div class="product-card-brands">Square D · BTICINO · FELEC · RILEZ · GENERAL ELECTRIC</div>
+                <div class="product-card-brands">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/square-d-by-schneider-electric-vector-logo.png" alt="Square D">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/BTicino_logo.svg.png" alt="BTicino">
+                </div>
               </div>
             </div>
             <div class="product-card">
@@ -1375,7 +1362,11 @@
                   <span class="product-card-item">Interruptores de caja moldeada y accesorios</span>
                   <span class="product-card-item">Desconectadores de cuchilla y rotativo</span>
                 </div>
-                <div class="product-card-brands">bticino · Square D · CHINT · STECK · SIEMENS · GENERAL ELECTRIC</div>
+                <div class="product-card-brands">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/BTicino_logo.svg.png" alt="BTicino">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/square-d-by-schneider-electric-vector-logo.png" alt="Square D">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/chint-logo.webp" alt="CHINT">
+                </div>
               </div>
             </div>
             <div class="product-card">
@@ -1388,7 +1379,9 @@
                   <span class="product-card-item">Empalmes y terminales</span>
                   <span class="product-card-item">Todo lo necesario para subestaciones tipo pedestal y sumergibles</span>
                 </div>
-                <div class="product-card-brands">chardon · elastimold · sigtronic · tyco</div>
+                <div class="product-card-brands">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/sigtronic-logo-vertical.svg" alt="Sigtronic">
+                </div>
               </div>
             </div>
             <div class="product-card">
@@ -1402,7 +1395,10 @@
                   <span class="product-card-item">Gabinetes tipo pedestal para accesorios subterráneos</span>
                   <span class="product-card-item">Gabinetes auto soportados para tableros</span>
                 </div>
-                <div class="product-card-brands">derrant · argos · legrand · aldes</div>
+                <div class="product-card-brands">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/argos-1.png" alt="Argos">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/Logo-28da2351-0c20-44a8-b9d1-79a8d64a33f0.webp" alt="Legrand">
+                </div>
               </div>
             </div>
             <div class="product-card">
@@ -1416,7 +1412,10 @@
                   <span class="product-card-item">Transformadores de distribución tipo pedestal</span>
                   <span class="product-card-item">Transformadores de distribución tipo sumergible</span>
                 </div>
-                <div class="product-card-brands">iemsa · prolec · ig · zetrak</div>
+                <div class="product-card-brands">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/8.-ProlecGE-1.webp" alt="Prolec GE" style="height:43px;max-width:180px;">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/ig.png" alt="IG">
+                </div>
               </div>
             </div>
             <div class="product-card">
@@ -1430,7 +1429,10 @@
                   <span class="product-card-item">Puntas pararayos y kits de sistemas pararayos</span>
                   <span class="product-card-item">Conectores mecánicos, ponchables y soldadura exotérmica</span>
                 </div>
-                <div class="product-card-brands">totalground · burndy · amesa</div>
+                <div class="product-card-brands">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/total-ground-sistemas-tierra-fisica-pararrayos-supresores-logo.png" alt="Totalground">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/burndy-logo-2gV2KxJrX.png" alt="Burndy">
+                </div>
               </div>
             </div>
           </div>
@@ -1450,7 +1452,9 @@
                   <span class="product-card-item">Baterías</span>
                   <span class="product-card-item">Conectores y accesorios</span>
                 </div>
-                <div class="product-card-brands">jinko solar · epever · victron energy</div>
+                <div class="product-card-brands">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/jinko-solar-logo.svg" alt="Jinko Solar">
+                </div>
               </div>
             </div>
             <div class="product-card">
@@ -1479,7 +1483,9 @@
                   <span class="product-card-item">Charola tipo escalera de aluminio</span>
                   <span class="product-card-item">Soportes tipo unicanal</span>
                 </div>
-                <div class="product-card-brands">futura industrial · emmsa · rymco</div>
+                <div class="product-card-brands">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/Group-1756.png" alt="Futura Industrial">
+                </div>
               </div>
             </div>
             <div class="product-card">
@@ -1493,7 +1499,10 @@
                   <span class="product-card-item">Focos y repuestos para todo tipo de lámparas</span>
                   <span class="product-card-item">Todo tipo de lámparas en LED y Fluorescente</span>
                 </div>
-                <div class="product-card-brands">tecnolite · sola-basic · phillips · argos · forlighting</div>
+                <div class="product-card-brands">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/TecnoLite.png.webp" alt="Tecnolite" style="height:56px;max-width:200px;">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/argos-1.png" alt="Argos">
+                </div>
               </div>
             </div>
             <div class="product-card">
@@ -1508,7 +1517,12 @@
                   <span class="product-card-item">Equipo de seguridad</span>
                   <span class="product-card-item">Equipo de medición (voltímetros, analizadores, etc.)</span>
                 </div>
-                <div class="product-card-brands">argos · trupper · klein tools · stanley · irwin · tramontina · milwaukee</div>
+                <div class="product-card-brands">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/argos-1.png" alt="Argos">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/truper.png" alt="Truper">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/irwin-tools-logo-color_500px.png" alt="Irwin">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/Tramontina-Logo.svg.png" alt="Tramontina">
+                </div>
               </div>
             </div>
             <div class="product-card">
@@ -1521,7 +1535,10 @@
                   <span class="product-card-item">Interphones para vivienda y edificios</span>
                   <span class="product-card-item">Cámaras de circuito cerrado (CCTV)</span>
                 </div>
-                <div class="product-card-brands">bticino · leviton · hikvision</div>
+                <div class="product-card-brands">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/BTicino_logo.svg.png" alt="BTicino">
+                  <img class="pcb-logo" src="Nuevo enercomm/Marcas distribuidas/Leviton%202C%20Logo.png" alt="Leviton">
+                </div>
               </div>
             </div>
           </div>

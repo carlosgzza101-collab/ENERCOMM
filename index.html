@@ -807,53 +807,68 @@
       font-size:.95rem; color:#555; margin-bottom:1.5rem; max-width:48ch; margin-left:auto; margin-right:auto;
     }
 
-    /* ── MOBILE ONLY: tap-to-reveal brand logos ── */
+    /* ── MOBILE ONLY: 3D card flip to reveal brand logos ── */
     @media(max-width:768px) {
-      .product-card { cursor:pointer; }
-      .product-card.pcb-revealed .product-card-brands {
-        display:flex !important;
-        animation:pcbReveal .35s ease;
+      /* overflow:hidden kills 3D perspective — move clip to faces */
+      .product-card { overflow:visible; perspective:900px; cursor:pointer; }
+      .pcb-flip-inner {
+        position:relative;
+        transform-style:preserve-3d;
+        transition:transform .52s cubic-bezier(.4,0,.2,1);
+        border-radius:8px;
       }
-      @keyframes pcbReveal {
-        from { opacity:0; transform:translateY(6px); }
-        to   { opacity:1; transform:translateY(0); }
+      .product-card.pcb-revealed .pcb-flip-inner { transform:rotateY(180deg); }
+      .pcb-front {
+        backface-visibility:hidden; -webkit-backface-visibility:hidden;
+        overflow:hidden; border-radius:8px;
       }
+      .pcb-back {
+        position:absolute; inset:0;
+        transform:rotateY(180deg);
+        backface-visibility:hidden; -webkit-backface-visibility:hidden;
+        background:#fff; border-radius:8px; overflow:hidden;
+        border:1px solid #f0f0f0;
+        display:flex; flex-direction:column;
+        align-items:center; justify-content:center;
+        gap:.85rem; padding:1.5rem 1.25rem;
+      }
+      .pcb-back-label {
+        font-size:.58rem; font-weight:800; letter-spacing:.12em;
+        text-transform:uppercase; color:var(--red); opacity:.75;
+      }
+      .pcb-back-logos {
+        display:flex; flex-wrap:wrap;
+        justify-content:center; align-items:center; gap:.55rem .75rem;
+      }
+      .pcb-back-logos .pcb-logo {
+        height:32px; max-width:120px;
+        filter:grayscale(1) opacity(.6); mix-blend-mode:multiply;
+      }
+      .pcb-back-hint { font-size:.58rem; color:#ccc; letter-spacing:.02em; }
 
-      /* Tutorial toast */
+      /* Tutorial toast — white pill with red accent */
       #pcb-tutorial {
-        position:fixed;
-        bottom:5.5rem; left:50%;
-        transform:translateX(-50%) translateY(14px);
+        position:fixed; bottom:5.5rem; left:50%;
+        transform:translateX(-50%) translateY(12px);
         z-index:500;
-        background:rgba(26,26,26,.88);
-        backdrop-filter:blur(8px);
-        -webkit-backdrop-filter:blur(8px);
+        background:#fff; border:1.5px solid var(--red);
         border-radius:999px;
-        padding:.65rem 1.3rem .65rem 1rem;
-        display:flex; align-items:center; gap:.55rem;
+        padding:.6rem 1.2rem .6rem .9rem;
+        display:flex; align-items:center; gap:.5rem;
         opacity:0; pointer-events:none;
         transition:opacity .4s ease, transform .4s ease;
         white-space:nowrap;
-        box-shadow:0 4px 24px rgba(0,0,0,.28);
+        box-shadow:0 4px 22px rgba(224,82,82,.22);
       }
-      #pcb-tutorial.visible {
-        opacity:1;
-        transform:translateX(-50%) translateY(0);
-      }
-      .pcb-tut-hand {
-        color:#fff;
-        flex-shrink:0;
-        animation:pcbHandTap .75s ease-in-out infinite;
-      }
+      #pcb-tutorial.visible { opacity:1; transform:translateX(-50%) translateY(0); }
+      .pcb-tut-hand { color:var(--red); flex-shrink:0; animation:pcbHandTap .75s ease-in-out infinite; }
       @keyframes pcbHandTap {
         0%,100% { transform:scale(1) translateY(0); }
-        45%     { transform:scale(.85) translateY(4px); }
+        45%     { transform:scale(.82) translateY(4px); }
       }
-      .pcb-tut-text {
-        color:#fff; font-size:.74rem; font-weight:600; letter-spacing:.01em;
-      }
+      .pcb-tut-text { color:var(--dark); font-size:.72rem; font-weight:700; }
     }
-    /* Hide tutorial on desktop — never render */
+    /* Always hidden on desktop */
     @media(min-width:769px) { #pcb-tutorial { display:none !important; } }
   </style>
 </head>
@@ -1928,35 +1943,72 @@
     if (e.key === 'Escape') closeMenu();
   });
 
-  /* ── Mobile: tap to reveal brand logos + scroll tutorial ── */
+  /* ── Mobile: 3D flip reveal + tutorial toast ── */
   (function() {
     if (window.innerWidth > 768) return;
 
-    // Tap toggle on each product card
+    // Build flip structure for every product card
     document.querySelectorAll('.product-card').forEach(function(card) {
-      card.addEventListener('click', function() {
-        this.classList.toggle('pcb-revealed');
-      });
+      var brands = card.querySelector('.product-card-brands');
+      var logos  = brands ? Array.from(brands.querySelectorAll('.pcb-logo')) : [];
+
+      // Front face: wrap existing card children
+      var front = document.createElement('div');
+      front.className = 'pcb-front';
+      while (card.firstChild) front.appendChild(card.firstChild);
+
+      // Back face: brand logos (or text fallback)
+      var back = document.createElement('div');
+      back.className = 'pcb-back';
+
+      var lbl = document.createElement('div');
+      lbl.className = 'pcb-back-label';
+      lbl.textContent = 'Marcas distribuidas';
+      back.appendChild(lbl);
+
+      if (logos.length) {
+        var wrap = document.createElement('div');
+        wrap.className = 'pcb-back-logos';
+        logos.forEach(function(l) { wrap.appendChild(l.cloneNode(true)); });
+        back.appendChild(wrap);
+      } else if (brands && brands.textContent.trim()) {
+        var txt = document.createElement('div');
+        txt.style.cssText = 'font-size:.75rem;color:#999;text-align:center;line-height:1.6;';
+        txt.textContent = brands.textContent.trim();
+        back.appendChild(txt);
+      }
+
+      var hint = document.createElement('div');
+      hint.className = 'pcb-back-hint';
+      hint.textContent = '↩ Toca para volver';
+      back.appendChild(hint);
+
+      var inner = document.createElement('div');
+      inner.className = 'pcb-flip-inner';
+      inner.appendChild(front);
+      inner.appendChild(back);
+      card.appendChild(inner);
+
+      card.addEventListener('click', function() { this.classList.toggle('pcb-revealed'); });
     });
 
-    // Tutorial toast — show once per session when #productos enters view
+    // Tutorial toast: show once per session when first card scrolls into view
     var tut = document.getElementById('pcb-tutorial');
-    if (!tut || sessionStorage.getItem('pcbTutSeen')) return;
+    if (!tut || sessionStorage.getItem('pcbFlipTut')) return;
 
-    var tutDone = false;
-    var tutObs = new IntersectionObserver(function(entries) {
-      if (!entries[0].isIntersecting || tutDone) return;
-      tutDone = true;
-      tutObs.disconnect();
+    var done = false;
+    var obs = new IntersectionObserver(function(entries) {
+      if (!entries[0].isIntersecting || done) return;
+      done = true; obs.disconnect();
       setTimeout(function() {
         tut.classList.add('visible');
-        sessionStorage.setItem('pcbTutSeen', '1');
-        setTimeout(function() { tut.classList.remove('visible'); }, 3500);
-      }, 700);
-    }, { threshold: 0.25 });
+        sessionStorage.setItem('pcbFlipTut', '1');
+        setTimeout(function() { tut.classList.remove('visible'); }, 4000);
+      }, 800);
+    }, { threshold: 0.6 });
 
-    var sec = document.getElementById('productos');
-    if (sec) tutObs.observe(sec);
+    var firstCard = document.querySelector('#productos .product-card');
+    if (firstCard) obs.observe(firstCard);
   })();
 </script>
 

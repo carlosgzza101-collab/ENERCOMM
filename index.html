@@ -806,6 +806,55 @@
     .productos-cta-block p {
       font-size:.95rem; color:#555; margin-bottom:1.5rem; max-width:48ch; margin-left:auto; margin-right:auto;
     }
+
+    /* ── MOBILE ONLY: tap-to-reveal brand logos ── */
+    @media(max-width:768px) {
+      .product-card { cursor:pointer; }
+      .product-card.pcb-revealed .product-card-brands {
+        display:flex !important;
+        animation:pcbReveal .35s ease;
+      }
+      @keyframes pcbReveal {
+        from { opacity:0; transform:translateY(6px); }
+        to   { opacity:1; transform:translateY(0); }
+      }
+
+      /* Tutorial toast */
+      #pcb-tutorial {
+        position:fixed;
+        bottom:5.5rem; left:50%;
+        transform:translateX(-50%) translateY(14px);
+        z-index:500;
+        background:rgba(26,26,26,.88);
+        backdrop-filter:blur(8px);
+        -webkit-backdrop-filter:blur(8px);
+        border-radius:999px;
+        padding:.65rem 1.3rem .65rem 1rem;
+        display:flex; align-items:center; gap:.55rem;
+        opacity:0; pointer-events:none;
+        transition:opacity .4s ease, transform .4s ease;
+        white-space:nowrap;
+        box-shadow:0 4px 24px rgba(0,0,0,.28);
+      }
+      #pcb-tutorial.visible {
+        opacity:1;
+        transform:translateX(-50%) translateY(0);
+      }
+      .pcb-tut-hand {
+        color:#fff;
+        flex-shrink:0;
+        animation:pcbHandTap .75s ease-in-out infinite;
+      }
+      @keyframes pcbHandTap {
+        0%,100% { transform:scale(1) translateY(0); }
+        45%     { transform:scale(.85) translateY(4px); }
+      }
+      .pcb-tut-text {
+        color:#fff; font-size:.74rem; font-weight:600; letter-spacing:.01em;
+      }
+    }
+    /* Hide tutorial on desktop — never render */
+    @media(min-width:769px) { #pcb-tutorial { display:none !important; } }
   </style>
 </head>
 <body>
@@ -1879,7 +1928,45 @@
     if (e.key === 'Escape') closeMenu();
   });
 
+  /* ── Mobile: tap to reveal brand logos + scroll tutorial ── */
+  (function() {
+    if (window.innerWidth > 768) return;
+
+    // Tap toggle on each product card
+    document.querySelectorAll('.product-card').forEach(function(card) {
+      card.addEventListener('click', function() {
+        this.classList.toggle('pcb-revealed');
+      });
+    });
+
+    // Tutorial toast — show once per session when #productos enters view
+    var tut = document.getElementById('pcb-tutorial');
+    if (!tut || sessionStorage.getItem('pcbTutSeen')) return;
+
+    var tutDone = false;
+    var tutObs = new IntersectionObserver(function(entries) {
+      if (!entries[0].isIntersecting || tutDone) return;
+      tutDone = true;
+      tutObs.disconnect();
+      setTimeout(function() {
+        tut.classList.add('visible');
+        sessionStorage.setItem('pcbTutSeen', '1');
+        setTimeout(function() { tut.classList.remove('visible'); }, 3500);
+      }, 700);
+    }, { threshold: 0.25 });
+
+    var sec = document.getElementById('productos');
+    if (sec) tutObs.observe(sec);
+  })();
 </script>
+
+<!-- Mobile tap-to-reveal tutorial toast -->
+<div id="pcb-tutorial" role="status" aria-live="polite">
+  <svg class="pcb-tut-hand" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M9 11.24V7.5C9 6.12 10.12 5 11.5 5S14 6.12 14 7.5v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.06.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.21 0-.62-.38-1.16-.91-1.41z"/>
+  </svg>
+  <span class="pcb-tut-text">Presiona para descubrir nuestras marcas</span>
+</div>
 
 </body>
 </html>

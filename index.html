@@ -626,8 +626,8 @@
       .carousel-page { display:none; }
       .carousel-page.active { display:block; animation:carouselFadeIn .45s ease; }
       .carousel-side-arrow { display:none !important; }
-      /* Ocultar nav superior (hijo directo de .container), dejar solo el inferior */
-      .container > .carousel-nav { display:none; }
+      /* Ocultar nav superior, dejar solo el inferior */
+      #carousel-nav-top { display:none; }
       .carousel-wrap { margin-top:1rem; }
       /* Botones de nav más grandes para touch */
       .carousel-btn { width:44px; height:44px; }
@@ -709,7 +709,7 @@
       .hero-ctas  { order:4; }
       .hero-stats { order:5; }
       #hero { justify-content:flex-start; min-height:82vh; }
-      .hero-content { padding-top:1.25rem; }
+      .hero-content { padding-top:0.25rem; }
 
       /* B — Centrar card solitario al final de grid de 2 cols (móvil) */
       .carousel-grid .product-card:last-child:nth-child(odd) {
@@ -1288,7 +1288,7 @@
     </div>
 
     <!-- Top carousel nav -->
-    <div class="carousel-nav" style="margin-top:2rem;margin-bottom:0;">
+    <div id="carousel-nav-top" class="carousel-nav" style="margin-top:2rem;margin-bottom:0;">
       <button class="carousel-btn" id="prevBtnTop">
         <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M15 19l-7-7 7-7"/></svg>
       </button>
